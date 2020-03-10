@@ -1,0 +1,9 @@
+.autogit
+.vscode
+.idea
+
+node_modules/
+info/
+
+info.txt
+
