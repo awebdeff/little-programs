@@ -1,4 +1,4 @@
-const TypeWriter = function (txtElement, words, wait = 3000) {
+const TypeWriter = function (txtElement, words, wait = 2000) {
   this.txtElement = txtElement
   this.words = words
   this.wait = wait
@@ -9,15 +9,26 @@ const TypeWriter = function (txtElement, words, wait = 3000) {
 }
 
 TypeWriter.prototype.type = function () {
-  let speed = 500
+  let speed = 300
   let currentIndex = this.wordIndex % this.words.length
   let currentWord = this.words[currentIndex]
 
   if (this.isDeleting) {
     speed = speed / 2
-    this.txt = currentWord.su
+    this.txt = currentWord.substring(0, this.txt.length - 1)
   } else {
-    speed = 500
+    speed = 300
+    this.txt = currentWord.substring(0, this.txt.length + 1)
+  }
+
+  this.txtElement.textContent = this.txt
+
+  if (!this.isDeleting && this.txt === currentWord) {
+    this.isDeleting = true
+    speed = this.wait
+  } else if (this.isDeleting && this.txt === '') {
+    this.wordIndex++
+    this.isDeleting = false
   }
 
   setTimeout(() => this.type(), speed)
