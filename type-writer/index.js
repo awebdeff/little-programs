@@ -8,6 +8,13 @@ const TypeWriter = function (txtElement, words, wait = 3000) {
   this.type()
 }
 
+TypeWriter.prototype.type = function() {
+  let speed = 500
+  currentIndex = this.wordIndex % this.words.length
+
+  setTimeout(() => this.type(), speed)
+}
+
 document.addEventListener('DOMContentLoaded', init)
 
 function init() {
