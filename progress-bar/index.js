@@ -1,3 +1,4 @@
+(() => {
 function progress() {
   let elem = document.getElementById('progress__line')
   let width = 1
@@ -16,3 +17,5 @@ function progress() {
 }
 
 progress()
+
+})()
